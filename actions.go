@@ -64,12 +64,31 @@ type Bootstrap struct {
 // State is the struct for an object state
 type State struct {
 	Attributes struct {
-		Auto         bool   `json:"auto"`
-		FriendlyName string `json:"friendly_name"`
-		Hidden       bool   `json:"hidden"`
-		Order        int    `json:"order"`
-		AssumedState bool   `json:"assumed_state"`
+		AppName                *string    `json:"app_name"`
+		EntityPicture          *string    `json:"entity_picture"`
+		FriendlyName           *string    `json:"friendly_name"`
+		IsVolumeMuted          *bool      `json:"is_volume_muted"`
+		MediaContentID         *int       `json:"media_content_id"`
+		MediaContentRating     *string    `json:"media_content_rating"`
+		MediaContentType       *string    `json:"media_content_type"`
+		MediaDuration          *int       `json:"media_duration"`
+		MediaEpisode           *string    `json:"media_episode"`
+		MediaLibraryName       *string    `json:"media_library_name"`
+		MediaPosition          *int       `json:"media_position"`
+		MediaPositionUpdatedAt *time.Time `json:"media_position_updated_at"`
+		MediaSeason            *int       `json:"media_season"`
+		MediaSeriesTitle       *string    `json:"media_series_title"`
+		MediaTitle             *string    `json:"media_title"`
+		SessionUsername        *string    `json:"session_username"`
+		Summary                *string    `json:"summary"`
+		SupportedFeatures      *int       `json:"supported_features"`
+		VolumeLevel            *int       `json:"volume_level"`
 	} `json:"attributes"`
+	Context struct {
+		ID       string      `json:"id"`
+		ParentID interface{} `json:"parent_id"`
+		UserID   interface{} `json:"user_id"`
+	} `json:"context"`
 	EntityID    string    `json:"entity_id"`
 	LastChanged time.Time `json:"last_changed"`
 	LastUpdated time.Time `json:"last_updated"`
