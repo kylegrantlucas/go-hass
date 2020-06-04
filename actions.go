@@ -83,6 +83,10 @@ type State struct {
 		Summary                *string    `json:"summary"`
 		SupportedFeatures      *int       `json:"supported_features"`
 		VolumeLevel            *int       `json:"volume_level"`
+		AppID                  *string    `json:"app_id"`
+		Icon                   *string    `json:"icon"`
+		MediaAlbumName         *string    `json:"media_album_name"`
+		MediaArtist            *string    `json:"media_artist"`
 	} `json:"attributes"`
 	Context struct {
 		ID       string      `json:"id"`
