@@ -9,14 +9,14 @@ import (
 )
 
 type Access struct {
-	host     string
-	password string
+	host  string
+	token string
 }
 
 // NewAccess returns a new *Access to be used to interface with the
 // Home Assistant system.
-func NewAccess(host, password string) *Access {
-	return &Access{host, password}
+func NewAccess(host, token string) *Access {
+	return &Access{host, token}
 }
 
 func (a *Access) httpGet(path string, v interface{}) error {
@@ -28,7 +28,7 @@ func (a *Access) httpGet(path string, v interface{}) error {
 	if err != nil {
 		return err
 	}
-	req.Header.Set("x-ha-access", a.password)
+	req.Header.Set("Authorization", "Bearer "+a.token)
 
 	success := false
 	for i := 0; i < 3; i++ {
@@ -86,7 +86,7 @@ func (a *Access) httpPost(path string, v interface{}) error {
 		Timeout: time.Second * 10,
 	}
 
-	req.Header.Set("x-ha-access", a.password)
+	req.Header.Set("Authorization", "Bearer "+a.token)
 
 	var err error
 	success := false
